@@ -57,21 +57,19 @@ const AgendaProfesional = () => {
 
     return (
         <>
-        <div className="container mt-5">
-            <h1 className="text-center" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '3.5rem', fontWeight: 'bold', color: '#3c3c3c' }}>Cronograma de Trabajo</h1>
+        <div className="relative container mx-auto mt-5 px-4 sm:px-6 lg:px-8">
+            <h1 className="text-center font-bold text-3xl text-white" >Cronograma de Trabajo</h1>
         
-            <div className="row justify-content-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
                 {datos.map((cita, index) => (
-                    <div key={index} className="col-md-6 mt-4">
-                        <div className="card">
-                            <div className="card-body">
-                                <img src={cita.imagenCliente} className="card-img-top rounded-circle m-2" alt="Imagen de perfil" style={{ width: '150px', height: '150px' }}/>
-                                <h2 className='modal-header' style={{background:'#3c3c3c'}}>Cita Programada</h2>
-                                <div style={{width:"100%",padding:'25px',background:'#3c3c3c',borderRadius:12,color:'white'}}>
-                                    <h1 className="card-title">Fecha: {formatFecha(cita.date)}</h1>
-                                    <h1 className="card-title">Hora: {formatHora(cita.hora)}</h1>
-                                    <h1 className="card-title">Nombre del Cliente: {cita.userName}</h1>
-                                </div>
+                    <div key={index} className="shadow-md rounded-lg">
+                        <div className="bg-gray-100 p-4 rounded-t-lg">
+                             <h2 className='text-white bg-black text-lg font-bold px-4 py-2 rounded-t-lg' >Cita Programada</h2>
+                                <div className='mt-4'>
+                                    <h1 className="font-semibold text-black">Fecha: {formatFecha(cita.date)}</h1>
+                                    <h1 className="font-semibold text-black">Hora: {formatHora(cita.hora)}</h1>
+                                    <h1 className="font-semibold text-black">Nombre del Cliente: {cita.userName}</h1>
+                                
                             </div>
                         </div>
                     </div>

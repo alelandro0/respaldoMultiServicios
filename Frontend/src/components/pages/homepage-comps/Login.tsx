@@ -6,6 +6,7 @@ import type { AuthResponse, AuthResponseError } from "../../../types/types";
 import React from "react";
 import Header from "./Header";
 import LogoMulti from "../../../../public/images/logoMulti.png";
+import './Login.css'
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -53,7 +54,7 @@ export default function Login() {
   return (
     <>
       <Header />
-      <section className="relative w-full md:h-screen p-4 text-white h-unset flex justify-center items-center">
+      <section className="ContainerL relative w-full md:h-screen p-4 text-white h-unset flex justify-center items-center">
         <div className="flex flex-col max-w-screen-lg mx-auto relative z-10">
           <div className="pb-0">
             <h2 className="text-4xl font-bold inline border-b-4 border-blue-600 border-opacity-40 sm:text-5xl">Iniciar Sesión</h2>

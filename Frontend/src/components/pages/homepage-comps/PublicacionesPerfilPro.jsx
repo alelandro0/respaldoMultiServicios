@@ -467,19 +467,19 @@ const PublicacionesPerfilPro = () => {
         <div className="perfil-usuario-body" style={{ width: '50%' }}>
           <div className="perfil-usuario-bio" style={{ display: 'flex', flexDirection: 'column' }}>
             <div>
-              <h2 className='info' style={{ color: 'black', marginBottom: '1rem' }}>Información Personal:</h2>
+              <h2 className='info' style={{ color: 'white', marginBottom: '1rem' }}>Información Personal:</h2>
             </div>
             <div>
-              <h2 className='info' style={{ color: 'black', marginBottom: '2rem' }}>{auth.getUser()?.roll}</h2>
+              <h2 className='info' style={{ color: 'white', marginBottom: '2rem' }}>{auth.getUser()?.roll}</h2>
             </div>
             <div>
-              <h2 className="Name" style={{ color: 'black' }}>Nombre: {auth.getUser()?.name}</h2>
+              <h2 className="Name" style={{ color: 'white' }}>Nombre: {auth.getUser()?.name}</h2>
             </div>
             <div>
-              <p className="Phone" style={{ color: 'black' }}>Numero de celular: {auth.getUser()?.telefono}</p>
+              <p className="Phone" style={{ color: 'white' }}>Numero de celular: {auth.getUser()?.telefono}</p>
             </div>
             <div>
-              <p className="Email" style={{ color: 'black' }}>Correo Electronico: {auth.getUser()?.username}</p>
+              <p className="Email" style={{ color: 'white' }}>Correo Electronico: {auth.getUser()?.username}</p>
             </div>
           </div>
           <div className="Post-potfile">

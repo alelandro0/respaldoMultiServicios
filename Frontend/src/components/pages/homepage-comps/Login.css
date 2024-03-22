@@ -1,0 +1,15 @@
+@media (max-width: 480px) {
+    .ContainerL {
+      padding-top: 100px;
+    }
+    #img-chat{
+        width: 100px;
+        height: 100px;
+    }
+    .ContainerR{
+        padding-top: 35px;
+    }
+    
+  }
+
+    

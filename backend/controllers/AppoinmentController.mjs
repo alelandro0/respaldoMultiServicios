@@ -4,7 +4,7 @@ import sendEmailDate from "../validations/correoCitasProgramadas.mjs";
 
 export const agendarCita = async (req, res) => {
   try {
-    const { description, date, hora, id, nombre , profesionalId} = req.body;
+    const { description, date, hora, id, nombre , profesionalId, nombreCliente} = req.body;
     
     // Obtenemos el usuario que realizó la cita
     const usuario = await User.findById(id);
@@ -22,6 +22,7 @@ export const agendarCita = async (req, res) => {
     const cita = await Cita.create({
       ProfesionalId:  profesionalId, // Asignamos el ID del usuario que realizó la cita
       nombre,
+      nombreCliente,
       date,
       hora,
       description,
@@ -131,7 +132,7 @@ export const getCitasUser = async (req, res) => {
 
 export const getCitasProfesional = async (req, res) => {
   try {
-    const { ProfesionalId } = req.params;
+    const { ProfesionalId } = req.params.ProfesionalId;
 
     const citas = await Cita.find({ ProfesionalId: ProfesionalId });
 
@@ -149,7 +150,7 @@ export const getCitasProfesional = async (req, res) => {
           date: cita.date,
           hora: cita.hora,
           userId: cita.userId,
-          userName: usuario.name,
+          userName: cita.nombreCliente,
           userImageProfile: usuario.imageProfile
         });
       }

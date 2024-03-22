@@ -5,6 +5,7 @@ import { useAuth } from '../../../Autentication/AutProvider';
 import type { AuthResponseError } from "../../../types/types";
 import Header from "./Header";
 import LogoMulti from "../../../../public/images/logoMulti.png";
+import './Login.css'
 
 export const Registro = () => {
   const [name, setName] = useState("");
@@ -56,7 +57,7 @@ export const Registro = () => {
   return (
     <>
       <Header />
-      <section className="relative w-full md:h-screen p-4 text-white h-unset flex justify-center items-center">
+      <section className="ContainerR relative w-full md:h-screen p-4 text-white h-unset flex justify-center items-center">
         <div className="flex flex-col max-w-screen-lg mx-auto relative z-10 mt-12">
           <div className="pb-0">
             <h2 className="text-4xl font-bold inline border-b-4 border-blue-600 border-opacity-40 sm:text-5xl">Registro</h2>

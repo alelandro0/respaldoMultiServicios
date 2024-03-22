@@ -19,7 +19,8 @@ export function ModalInfo({ SelectedProject, closeModal }) {
         <div className="w-full text-white p-8 flex flex-col bg-black/80 border-opacity-70 border-primary-color rounded-bl-lg rounded-br-lg">
           <ul>
             <li>
-              <span className="text-primary-color">Descripcion: </span>
+            <span className="text-blue-600">Descripcion: </span>
+
               <span>{SelectedProject?.description}</span>
             </li>
             {/* Agrega más elementos aquí según sea necesario */}
@@ -30,7 +31,7 @@ export function ModalInfo({ SelectedProject, closeModal }) {
           onClick={handleClickCloseButton}
           className="absolute top-3 right-2 lg:right-4 cursor-pointer"
         >
-          <i className="bx bx-x-circle bg-black text-primary-color text-[2.25rem] rounded-full transition-transform duration-300 hover:scale-110"></i>
+          <i className="bx bx-x-circle bg-black text-blue-600 text-[2.25rem] rounded-full transition-transform duration-300 hover:scale-110"></i>
         </button>
       </div>
     </section>

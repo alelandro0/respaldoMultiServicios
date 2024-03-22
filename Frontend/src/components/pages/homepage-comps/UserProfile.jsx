@@ -453,8 +453,9 @@
 
       try {
         const formData = {
-          profesionalId:profesionalesIdo,
+          profesionalId:profesionalesId,
           nombre: name,
+          nombreCliente: auth.getUser()?.name,
           description: descripcionCita,
           date: fechas,
           hora: horas,

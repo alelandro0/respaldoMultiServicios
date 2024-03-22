@@ -7,6 +7,7 @@ const { Schema } = mongoose;
 const citaSchema = new Schema({
     ProfesionalId:{type: mongoose.Schema.Types.ObjectId},
     nombre:{type: String},
+    nombreCliente:{type:String},
     date: { type: Date, required: true },
     hora: { type: String, require:true },
     description: { type: String, required: true },

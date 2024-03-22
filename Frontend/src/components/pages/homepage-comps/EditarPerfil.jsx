@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from "../../../Autentication/AutProvider";
+/* eslint-disable react-hooks/exhaustive-deps */
 import NabarMenu from "./NabarMenu";
+import { useAuth } from "../../../Autentication/AutProvider";
+import { useEffect, useState } from 'react';
+import { API_URL } from "../../../Autentication/constanst";
+import Swal from 'sweetalert2';
+
 
 export const EditarPerfil = () => {
   const [name, setName] = useState('');
@@ -21,15 +25,7 @@ export const EditarPerfil = () => {
   };
 
   const handleTelefonoChange = (event) => {
-    const telefonoValue = event.target.value;
-    // Validar longitud y formato del teléfono
-    if (telefonoValue.length <= 10 && /^\d+$/.test(telefonoValue)) {
-      setTelefono(telefonoValue);
-    } else {
-      // Mostrar mensaje de error si el formato no es válido
-      setModalMessage("Por favor, ingrese un número de teléfono válido (solo dígitos y máximo 10 caracteres).");
-      setShowModal(true);
-    }
+    setTelefono(event.target.value);
   };
 
   const handleContrasenaChange = (event) => {
@@ -39,8 +35,8 @@ export const EditarPerfil = () => {
   const handleGuardarCambios = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/perfil/${auth.getUser()?.id}`, {
-        method: 'POST',
+      const response = await fetch(`${API_URL}/perfil/${auth.getUser()?.id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${auth.getAccessToken()}`,
@@ -49,6 +45,12 @@ export const EditarPerfil = () => {
       });
 
       if (response.ok) {
+        await Swal.fire({
+          icon: 'success',
+          title: '¡Cita Agendada Exitosamente!',
+          showConfirmButton: false,
+          timer: 1500
+        });
         console.log('Perfil actualizado exitosamente');
         setModalMessage("Perfil actualizado exitosamente");
         setShowModal(true);
@@ -68,6 +70,12 @@ export const EditarPerfil = () => {
         setShowModal(true);
       }
     } catch (error) {
+      await Swal.fire({
+        icon: 'error',
+        title: '¡Error!',
+        text: 'Ocurrió un error al actualizar.',
+
+      });
       console.error('Error al actualizar el perfil:', error);
       setModalMessage("Error al actualizar el perfil: " + error.message);
       setShowModal(true);
@@ -81,7 +89,7 @@ export const EditarPerfil = () => {
   async function getImageProfile() {
     try {
       const id = auth.getUser()?.id;
-      const response = await fetch(`http://localhost:5000/api/getImage/${id}`, {
+      const response = await fetch(`${API_URL}/getImage/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -120,9 +128,9 @@ export const EditarPerfil = () => {
           <div className="pb-4">
             <h2 className="text-4xl font-bold inline border-b-4 border-blue-600 border-opacity-40 sm:text-5xl">Editar Perfil</h2>
           </div>
-  
+
           <div className="flex justify-between items-center relative z-10 space-y-6">
-  
+
             <form onSubmit={handleGuardarCambios} className="flex flex-col w-full md:w-1/2 rounded-md p-0 space-y-4" style={{ zIndex: "20" }}>
               <div className="flex flex-col">
                 <label htmlFor="name" className="text-white">Nombre:</label>
@@ -135,7 +143,7 @@ export const EditarPerfil = () => {
                   className="p-3 bg-transparent border-2 rounded-md text-white focus:outline-none focus:border-blue-600"
                 />
               </div>
-  
+
               <div className="flex flex-col">
                 <label htmlFor="email" className="text-white">Correo Electrónico:</label>
                 <input
@@ -147,7 +155,7 @@ export const EditarPerfil = () => {
                   className="p-3 bg-transparent border-2 rounded-md text-white focus:outline-none focus:border-blue-600"
                 />
               </div>
-  
+
               <div className="flex flex-col">
                 <label htmlFor="telefono" className="text-white">Teléfono:</label>
                 <input
@@ -158,12 +166,8 @@ export const EditarPerfil = () => {
                   placeholder="Ingrese su nuevo Teléfono"
                   className="p-3 bg-transparent border-2 rounded-md text-white focus:outline-none focus:border-blue-600"
                 />
-                {/* Agregar mensaje de error */}
-                {telefono.length > 0 && !(/^\d+$/.test(telefono)) && (
-                  <p className="text-red-500 text-sm">Por favor, ingrese solo dígitos para el teléfono.</p>
-                )}
               </div>
-  
+
               <div className="flex flex-col">
                 <label htmlFor="contrasena" className="text-white">Contraseña:</label>
                 <input
@@ -183,7 +187,7 @@ export const EditarPerfil = () => {
                 Guardar Cambios
               </button>
             </form>
-  
+
             <div className="ml-8 relative z-20" style={{ marginBottom: "2rem" }}>
               <img
                 src={downloadURL}
@@ -192,12 +196,12 @@ export const EditarPerfil = () => {
               />
             </div>
           </div>
-  
+
         </div>
       </section>
       {showModal && (
-        <div className="modal3">
-          <div className="modal3-content">
+        <div className="modal2">
+          <div className="modal2-content">
             <p>{modalMessage}</p>
             <button className='accept-btn' onClick={closeModal}>Cerrar</button>
           </div>
@@ -205,7 +209,6 @@ export const EditarPerfil = () => {
       )}
     </div>
   );
-
 };
 
 export default EditarPerfil;

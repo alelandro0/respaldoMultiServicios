@@ -24,7 +24,6 @@ import { router as agendaProfesional } from "./routes/getCitasProfesinal.mjs";
 import { router as UpdatePerfil } from "./routes/UpdateUser.mjs";
 import {router as portada} from './routes/portada.mjs'
 import {router as portadaGet} from './routes/portadaGet.mjs'
-import User from './models/user.mjs';
 
 dotenv.config();
 const expressPort = process.env.PORT || 5000;
@@ -54,7 +53,7 @@ io.on('connection', socket => {
 
 main();
 
-User.actualizarTelefonos();
+
 
 app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);

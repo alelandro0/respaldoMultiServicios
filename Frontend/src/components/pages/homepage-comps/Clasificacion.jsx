@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import html from "../../../assets/24-horas.png";
+
 import javascript from "../../../assets/construccion.png";
 import react from "../../../assets/enfermeria.png";
 import vue from "../../../assets/martillo.png";

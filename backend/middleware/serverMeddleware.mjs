@@ -6,7 +6,16 @@ import { resolve } from 'path';
 const app = express();
 
 
-app.use(cors());
+app.use(cors({
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
