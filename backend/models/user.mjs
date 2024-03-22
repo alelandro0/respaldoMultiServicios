@@ -76,4 +76,19 @@ UserSchema.methods.createRefreshToken = async function () {
   }
 };
 
+UserSchema.statics.actualizarTelefonos = async function () {
+  try {
+    // Encuentra todos los usuarios que no tienen el campo 'telefono' definido
+    const usuariosSinTelefono = await this.find({ telefono: { $exists: false } });
+
+    // Itera sobre los usuarios encontrados y agrega el campo 'telefono'
+    for (const usuario of usuariosSinTelefono) {
+      usuario.telefono = '1234567890'; // Asigna el valor que desees para el campo 'telefono'
+      await usuario.save(); // Guarda el usuario actualizado
+    }
+
+  } catch (error) {
+    console.error('Error al actualizar los teléfonos:', error);
+  }
+};
 export default Mongoose.model("User", UserSchema);

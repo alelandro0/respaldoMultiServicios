@@ -5,6 +5,6 @@ import { getUserById } from "../controllers/UpdateUser.mjs";
 const router = express.Router();
 router.get ('/:id', getUserById)
 
-router.put('/:id', UpdatePerfil);
+router.post('/:id', UpdatePerfil);
 
 export {router}
