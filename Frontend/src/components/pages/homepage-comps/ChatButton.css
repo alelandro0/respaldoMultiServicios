@@ -171,3 +171,11 @@ body {
   font-size: 30px;
   color: #000;
 }
+
+
+@media screen and (max-width: 480px) {
+  #img-chat {
+    width: 100px;
+    height: 120px;
+  }
+}

@@ -529,7 +529,7 @@
               </label>
             </div>
           </div>
-          <div className="perfil-usuario-body1" style={{ width: '50%', backgroundColor: 'black', color: 'white', padding: '20px', borderRadius: '10px' }}>
+          <div className="perfil-usuario-body1">
             <div className="perfil-usuario-bio" style={{ display: 'flex', flexDirection: 'column', background: "transparent" }}>
               <div>
                 <h2 className='infor'>Información Personal:</h2>

@@ -146,6 +146,16 @@ body {
     
 }
 
+.perfil-usuario-body1{
+    width: 50%;
+    background-color: black;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+
 .area-comentar {
     display: flex;
     flex-wrap: wrap;
@@ -455,7 +465,9 @@ body {
         width: 100%; /* Cambia el ancho al 100% para ocupar todo el ancho disponible */
     }
 
-    
+    .perfil-usuario-body1{
+        width: 85%;
+    }
 
     .perfil-usuario-portada {
         width: 100%; /* Cambia el ancho al 100% para ocupar todo el ancho disponible */

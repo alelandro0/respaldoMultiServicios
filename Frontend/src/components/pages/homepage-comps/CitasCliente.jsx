@@ -57,35 +57,34 @@ const CitasCliente = () => {
       <>
       <NabarMenu /> 
       <div className="relative container mx-auto mt-5 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-center font-bold text-3xl text-white">
-          Mis Citas
-        </h1>
-        <div className= "grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-          {Array.isArray(datos) && datos.length > 0 ? (
-            datos.map((cita, index) => (
-              <div key={index} className="shadow-md rounded-lg">
-                <div className="bg-gray-100 p-4 rounded-t-lg ">
-                  <h2 className="text-white bg-black text-lg font-bold px-4 py-2 rounded-t-lg">
-                    Cita Programada
-                  </h2>
-                  <div className="mt-4 ">
-                    <p className="font-semibold text-black">Fecha:</p>
-                    <p className='text-black'>{formatFecha(cita.date)}</p>
-                    <p className="font-semibold text-black">Hora:</p>
-                    <p className='text-black'>{formatHora(cita.hora)}</p>
-                    <p className="font-semibold text-black">Profesional:</p>
-                    <p className='text-black'>{cita.nombre}</p>
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="col-md-6 mt-4">
-              <p>No hay citas pendientes</p>
-            </div>
-          )}
+  <h1 className="text-center font-bold text-3xl text-white">Mis Citas</h1>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+  {Array.isArray(datos) && datos.length > 0 ? (
+    datos.map((cita, index) => (
+      <div key={index} className="shadow-md rounded-lg bg-transparent border-black border-2">
+        <div className="p-4 rounded-t-lg" style={{ backdropFilter: 'blur(8px)' }}>
+          <h2 className="text-white text-lg font-bold px-4 py-2 rounded-t-lg bg-black">Cita Programada</h2>
+          <div className="mt-4 bg-transparent rounded-md p-4">
+            <p className="font-semibold text-white">Fecha:</p>
+            <p className="text-white">{formatFecha(cita.date)}</p>
+            <p className="font-semibold text-white">Hora:</p>
+            <p className="text-white">{formatHora(cita.hora)}</p>
+            <p className="font-semibold text-white">Profesional:</p>
+            <p className="text-white">{cita.nombre}</p>
+          </div>
         </div>
       </div>
+    ))
+  ) : (
+    <div className="col-md-6 mt-4">
+      <p>No hay citas pendientes</p>
+    </div>
+  )}
+</div>
+
+
+</div>
+
     </>
     );
 };
